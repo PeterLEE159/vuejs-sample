@@ -1,5 +1,5 @@
 <template>
-  <app-page-component></app-page-component>
+  <app-todos-component></app-todos-component>
   
 </template>
 
@@ -8,7 +8,7 @@ import Vue from 'vue';
 import UUID from 'vue-uuid';
 import VueLodash from 'vue-lodash'
 
-import AppPageComponent from './components/page.vue';
+import AppTodosComponent from './components/todos.vue';
 
 
 Vue.use(VueLodash, { name: 'lodash' });
@@ -17,14 +17,21 @@ Vue.use(UUID);
 export default {
   name: 'app',
   components: {
-    AppPageComponent
+    AppTodosComponent
   }
 };
 </script>
 
 <style lang="scss">
-   .spinner {
-     font-size: 16px;
-   }
+  * {
+    outline-offset: 0;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+   
+
+
    
 </style>
