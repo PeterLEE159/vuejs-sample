@@ -3,7 +3,9 @@
       <input type="text" v-model="typed" @keyup.enter="onEnter">
       <button @click.stop.prevent="onEnter">활성화</button>
 
-      
+        <p>{{ uid }}</p>
+
+        <router-link to="/page/12">가자</router-link>
       
       
         <div 
@@ -28,31 +30,57 @@
         </div>
         
       </component>
+
+      
       
     </div>
+
+    
     
 </template>
 
 <script>
+import { appMethod } from '../mixins';
 import AppDateSelector from './date-selector.vue';
 import draggable from 'vuedraggable';
-import { uuid } from 'vue-uuid'
+import { uuid } from 'vue-uuid';
+
+
 
 export default {
   name: "app-page",
+  props: {
+    uid: {
+      type: Number,
+      default: 5
+    }
+  },
+  mixins: [ appMethod ],
   data() {
     return {
       typed: '',
       itemTarget: undefined,
       arr: [],
-      console
+      link: {
+        name: 'userEdit',
+        params: {
+          id: this.$route.params.id
+        },
+        query: {
+          lang: 'en',
+          q: 100
+        },
+        hash: '#data'
+      }
     }
   },
   created() {
 
       for(let id = 1; id <= 10; id ++) 
         this.arr.push({ id, name: id + '회' });
-        
+  },
+  mounted() {
+    
   },
   methods: {
     
@@ -146,6 +174,8 @@ export default {
   .dragged {
     
   }
+
+
   
 
 </style>
