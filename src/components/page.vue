@@ -1,5 +1,8 @@
 <template>
     <div id="app-page">
+      <p>page !! {{ $store.getters.double }}</p>
+      <p>page !! {{ double }}</p>
+
       <input type="text" v-model="typed" @keyup.enter="onEnter">
       <button @click.stop.prevent="onEnter">활성화</button>
 
@@ -44,7 +47,8 @@ import { appMethod } from '../mixins';
 import AppDateSelector from './date-selector.vue';
 import draggable from 'vuedraggable';
 import { uuid } from 'vue-uuid';
-
+import { mapGetters } from 'vuex';
+import { allGetters } from '../stores/store';
 
 
 export default {
@@ -76,14 +80,18 @@ export default {
   },
   created() {
 
-      for(let id = 1; id <= 10; id ++) 
-        this.arr.push({ id, name: id + '회' });
+      // for(let id = 1; id <= 10; id ++) 
+      //   this.arr.push({ id, name: id + '회' });
   },
-  mounted() {
-    
-  },
+  
+  
+  
   methods: {
-    
+    increment() {
+      this.$store.store.counter++;
+    }, decrease() {
+      this.$store.store.counter--;
+    },
     onDragStart(item, index) {
       item.copied = { ...item, isCopied: true, id: this.$uuid.v1() };
       let prev, next;
@@ -152,8 +160,15 @@ export default {
     }
   },
   computed: {
+    computedDouble() {
+      return this.$store.getters.double;
+    },
+    ...mapGetters([ 'double' ])
+    
+    
     
   },
+
   components: {
     draggable,
     AppDateSelector

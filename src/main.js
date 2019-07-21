@@ -1,15 +1,19 @@
 import Vue from 'vue';
 import App from './App.vue';
-import store from './store';
 import VueRouter from 'vue-router';
 import ViewResource from 'vue-resource'
 import VueLodash from 'vue-lodash'
 import UUID from 'vue-uuid';
+import Vuex from 'vuex';
 import { routes } from './router';
+import { store } from './stores/store';
 
 Vue.use(ViewResource);
 Vue.use(VueLodash, { name: 'lodash' });
 Vue.use(UUID);
+
+
+
 
 Vue.use(VueRouter);
 const router = new VueRouter({

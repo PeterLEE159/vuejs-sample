@@ -1,15 +1,24 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <!-- <router-view></router-view> -->
 
     <!-- <app-todos-component></app-todos-component> -->
-    <!-- <app-page-component></app-page-component>
-    <div class="p-loading" ref="pLoading">
+    <app-page-component></app-page-component>
+
+    <!-- <div class="p-loading" ref="pLoading">
       <div></div>
       <img src="./assets/imgs/implant.gif">
-    </div>
+    </div> -->
     <button @click="pLoading(true)">qqq</button>
-    -->
+
+    <button @click.stop="$store.state.counter++">+</button>
+    <button @click.stop="$store.state.counter--">-</button>
+    <input type="text" v-model="$store.state.typed">
+    {{ $store.state.typed }}
+
+    <button @click.stop="$store.commit('increment')">+</button>
+    <button @click.stop="$store.commit('decrement')">-</button>
+    <p>{{ $store.state.counter }}</p>
   </div>
   
 </template>
@@ -21,7 +30,7 @@ import { appMethod } from './mixins';
 import { refBus } from './ref-bus';
 
 // import AppTodosComponent from './components/todos.vue';
-// import AppPageComponent from './components/page.vue';
+import AppPageComponent from './components/page.vue';
 
 
 
@@ -40,8 +49,8 @@ export default {
   mixins: [ appMethod ],
   created() {
     
-    console.log(this.$router);
-    console.log(this.$route);
+    // console.log(this.$router);
+    // console.log(this.$route);
   },
   mounted() {
     
@@ -53,7 +62,7 @@ export default {
   },
   components: {
     // AppTodosComponent,
-    // AppPageComponent
+    AppPageComponent
   }
 };
 </script>
