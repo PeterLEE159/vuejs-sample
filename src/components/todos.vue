@@ -8,8 +8,6 @@
 </template>
 
 <script>
-import todosService from '@/service/todos.service';
-import { from , forkJoin } from 'rxjs';
 
 export default {
   name: 'app-todos',
@@ -47,33 +45,7 @@ export default {
   },
 
   methods: {
-    onEditComplete(todo) {
-      todo.isEdit = false;
-      todo.name = this.$refs.todoEditInput[0].value;
     
-    },
-    onAddTodo() {
-      if(this.typed == '') {
-        alert('todo를 입력하세요');
-        return;
-      }
-
-      this.todos.push( { id: this.$uuid.v1(), name: this.typed, isEdit: false });
-      this.typed = '';
-    },
-
-    deleteTodo(todo) {
-      let idx = 0;
-      for(let i =0 ; i < this.todos.length ; i ++) {
-        if(todo != this.todos[i]) continue;
-        idx = i;
-        break;
-      }
-
-      if(idx == -1) return;
-
-      this.todos.splice(idx, 1);
-    }
   }
 }
 </script>

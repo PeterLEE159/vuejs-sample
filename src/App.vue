@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <app-todos-component></app-todos-component>
+    <app-page-component></app-page-component>
   </div>
   
 </template>
@@ -9,20 +9,21 @@
 
 
 import { appMethod } from './mixins';
-import { refBus } from './ref-bus';
 
-import AppTodosComponent from './components/todos.vue';
+import AppPageComponent from './components/Page.vue';
 
 
 export default {
   name: 'app',
   components: {
-    AppTodosComponent
+    AppPageComponent
   }
 };
 </script>
 
 <style lang="scss">
-
+  .btn {
+    margin: 0;
+  }
    
 </style>
