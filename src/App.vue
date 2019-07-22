@@ -1,15 +1,17 @@
 <template>
-  <app-todos-component></app-todos-component>
+  <div id="app">
+    <app-todos-component></app-todos-component>
+  </div>
   
 </template>
 
 <script>
 
 
+import { appMethod } from './mixins';
+import { refBus } from './ref-bus';
 
 import AppTodosComponent from './components/todos.vue';
-
-
 
 
 export default {
@@ -21,15 +23,6 @@ export default {
 </script>
 
 <style lang="scss">
-  * {
-    outline-offset: 0;
-  }
-
-  ul {
-    list-style-type: none;
-  }
-   
-
 
    
 </style>

@@ -2,41 +2,6 @@
 
   <div id="app-todos">
     
-    <!-- <img src="@/assets/logo.png" alt=""> -->
-
-    <div class="typed-group">
-      <input type="text" v-model="typed">
-      <button @click="onAddTodo">생성</button>
-      <div><span>{{ msg }}</span></div>
-    </div>
-    
-    <div class="todo-group mt-5">
-      <ul class="list-group">
-        <li v-for="(todo, index) in todos" :key="todo.id" class="list-group-item">
-          
-          <div v-if="!todo.isEdit">
-            {{ index + 1 }}.
-            <span>{{ todo.name }}</span>
-            <a href="#" @click.stop="todo.isEdit = true">수정</a>
-            <a href="#" @click.stop="deleteTodo">삭제</a>
-          </div>
-
-          <div v-if="todo.isEdit">
-            {{ index + 1 }}.
-            <input type="text" :value="todo.name" ref="todoEditInput">
-            <a href="#" @click.stop="onEditComplete(todo)">완료</a>
-            <a href="#" @click.stop="deleteTodo(todo)">삭제</a>
-          </div>
-
-
-
-
-
-          
-        </li>
-      </ul>
-
-    </div>
   </div>
 
 
@@ -48,14 +13,14 @@ import { from , forkJoin } from 'rxjs';
 
 export default {
   name: 'app-todos',
+  
   data() {
     return {
-      typed: '',
-      msg: '',
-      todos: []
+
     }
   },
   created() {
+
 
     // const todos = [
     //   { content: '프로토타입 작업', date: '20190721', priority: '높음', progress: '설계' },
@@ -75,7 +40,7 @@ export default {
   mounted() {
     this.$http.service.todoService.getTodos('20190722')
       .then(res => {
-
+        console.log(res);
       }).catch(err => {
         
       });
@@ -85,7 +50,7 @@ export default {
     onEditComplete(todo) {
       todo.isEdit = false;
       todo.name = this.$refs.todoEditInput[0].value;
-      
+    
     },
     onAddTodo() {
       if(this.typed == '') {
@@ -115,24 +80,5 @@ export default {
 
 
 <style scoped lang="scss">
-  #app-todos {
-    padding: 24px;
-  }
-  .typed-group {
-    margin-bottom: 32px;
-  }
-  li.list-group-item {
-    div {
-      display: flex;
-      flex-direction: row;
-      span, input {
-        flex: 7;
-        margin: 0 12px;
-      }
-      a {
-        flex: 1;
-      }
-    }
-  }
   
 </style>
