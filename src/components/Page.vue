@@ -1,17 +1,19 @@
 <template>
 
   <div id="app-page">
-    <!-- <app-todos-component></app-todos-component> -->
+    <div style="background: white; border-bottom: 1px solid black">header</div>
     <router-view></router-view>
   </div>
 
 
 </template>
 
-<script>
-
+<script>  
+import { mapGetters } from 'vuex';
+import { mapGet } from '@/store';
 
 export default {
+  
   
   name: 'app-page',
   
@@ -19,6 +21,12 @@ export default {
     return {
 
     }
+  },
+  mounted() {
+    
+  },
+  computed: {
+    ...mapGet
   }
 }
 </script>

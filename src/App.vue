@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <app-page-component></app-page-component>
+    <router-view></router-view>
+    <!-- <app-page-component></app-page-component> -->
   </div>
   
 </template>
@@ -10,14 +11,19 @@
 
 import { appMethod } from './mixins';
 
-import AppPageComponent from './components/Page.vue';
-
 
 export default {
   name: 'app',
-  components: {
-    AppPageComponent
+  methods: {
+
+  },
+  created() {
+    this.$store.state.todos = [
+      { content: 'sql', id: 1 },
+      { content: 'ddl', id: 2 }
+    ];
   }
+
 };
 </script>
 

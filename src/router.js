@@ -1,6 +1,7 @@
 import VueRouter from 'vue-router';
 
-import PageComponent from '@/components/Page.vue';
+import AppComponent from '@/App.vue';
+import PageComponent from '@/components/Page.vue'
 import TodoPageComponent from '@/components/TodoPage.vue';
 import UserPageComponent from '@/components/UserPage.vue';
 
@@ -10,9 +11,14 @@ const redirect = `/todos/${date.getFullYear()}/${String(date.getMonth()+1).padSt
 
 const routes = [
   { 
-    path: '/', component:  PageComponent, redirect, children: [
-      { path: 'todos/:year/:month', component: TodoPageComponent, props: true },
-      { path: 'users', component: UserPageComponent }
+    path: '/', component:  AppComponent, redirect, children: [
+      { 
+        path: '', component: PageComponent, children: [
+          { path: 'todos/:year/:month', component: TodoPageComponent, props: true },
+          { path: 'users', component: UserPageComponent } 
+        ]
+      }
+      
   ]},
 
   { path: '*', redirect }

@@ -1,7 +1,8 @@
 <template>
 
   <div id="app-todo-page">
-    <div class="date-selector">
+    nested-page
+    <!-- <div class="date-selector">
       <app-date-selector></app-date-selector>
     </div>
     <div class="todos">
@@ -16,7 +17,7 @@
       </div>
       
       <app-todos></app-todos>
-    </div>
+    </div> -->
   </div>
 
 
